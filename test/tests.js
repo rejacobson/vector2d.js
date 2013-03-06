@@ -164,11 +164,12 @@
     floatDeepEqual(a.clone().rotate(-angle_r, [4, 0]).toArray(), [6, 0], '[4, 2] rotated 90 degrees around Array[4, 0] == [6, 0]');
   });
 
-/*
-  test('', function(){
-    var a = new Vector2d();
+  test('#reflect - Reflect a vector around another vector', function(){
+    var a = new Vector2d(4, -4);
+    
   });
 
+/*
   test('', function(){
     var a = new Vector2d();
   });

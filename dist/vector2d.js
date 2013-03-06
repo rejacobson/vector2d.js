@@ -1,6 +1,10 @@
 (function(){
 
   var Vector2d = function(x, y) {
+    if (!(this instanceof Vector2d)) {
+      return new Vector2d(x, y);
+    }
+
     this.push(x || 0, y || 0);
 
     this._cached_length = null;
@@ -120,13 +124,8 @@
   };
   
   Vector2d.prototype.reflect = function(normal) {
-    var n = normal.multiply(this.dot(normal)), // normal component
-        t = this.subtract(n);                  // tangential component
-  
-    this.x = t.x - n.x;
-    this.y = t.y - n.y;
-    
-    return this;
+    // r = v - (2 * n * dot(v, n))
+    return v.subtract(n.clone().scale(v.dot(n) * 2));
   };
   
   Vector2d.prototype.unit = function() {
