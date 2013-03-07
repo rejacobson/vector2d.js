@@ -123,9 +123,10 @@
     return this;
   };
   
-  Vector2d.prototype.reflect = function(normal) {
+  Vector2d.prototype.reflect = function(n) {
+    if (!(n instanceof Vector2d)) n = new Vector2d(n[0], n[1]);
     // r = v - (2 * n * dot(v, n))
-    return v.subtract(n.clone().scale(v.dot(n) * 2));
+    return this.subtract(n.clone().scale(this.dot(n) * 2));
   };
   
   Vector2d.prototype.unit = function() {
@@ -135,22 +136,15 @@
   };
   
   Vector2d.prototype.normal = function() {
-    return new Vector2d(-this.y, this.x);
+    return new Vector2d(this.y, -this.x);
   };
   
   Vector2d.prototype.dot = function(v) {
     return this.x * v[0] + this.y * v[1];
   };
   
-/*
-  Vector2d.prototype.cross = function(v) {
-    return this.x * v[1] – this.y * v[0];
-  };
-*/
-  
   Vector2d.prototype.angle = function(v) {
-    var diff = (v != undefined) ? this.clone().subtract(v) : this;
-    return Math.atan2(diff.x, diff.y);
+    return Math.atan2(this.x, this.y);
   };
 
 
