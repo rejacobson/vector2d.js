@@ -25,17 +25,34 @@
   };
 
 
-  test('new Vector2d() -- New vector with arguments', function(){
+  module('Initialization');
+
+  test('new Vector2d() -- New vector with no arguments', function(){
+    var v = new Vector2d();
+    strictEqual(v.x, 0, 'x === 0');
+    strictEqual(v.y, 0, 'y === 0');
+  });
+
+  test('new Vector2d(n, n) -- New vector with arguments', function(){
     var v = new Vector2d(1, 2);
     strictEqual(v.x, 1, "x === 1");
     strictEqual(v.y, 2, "y === 2");
   });
 
-  test('new Vector2d(n, n) -- New vector with no arguments', function(){
-    var v = new Vector2d();
-    strictEqual(v.x, 0, 'x === 0');
-    strictEqual(v.y, 0, 'y === 0');
+  test('new Vector2d([n, n]) -- New vector with array arguments', function(){
+    var v = new Vector2d([1, 2]);
+    strictEqual(v.x, 1, "x === 1");
+    strictEqual(v.y, 2, "y === 2");
   });
+
+  test('Vector2d() -- New vector without "new"', function(){
+    var v = Vector2d([1, 2]);
+    strictEqual(v.x, 1, "x === 1");
+    strictEqual(v.y, 2, "y === 2");
+  });
+
+
+  module('Utility');
 
   test('#toArray', function(){
     var a = new Vector2d(1, 2);
@@ -63,29 +80,8 @@
     deepEqual(a.toArray(), [5, 6], 'Set to [5, 6]');
   });
 
-  test('#distanceTo - Distance from one vector to another', function(){
-    var a = new Vector2d(0, 0),
-        b = new Vector2d(3, 4);
 
-    strictEqual(a.distanceTo(b), 5, '[3, 4] - [0, 0] distance == 5');
-  });
-
-  test('#distanceToSq - Squared distance from one vector to another', function(){
-    var a = new Vector2d(0, 0),
-        b = new Vector2d(3, 4);
-
-    strictEqual(a.distanceToSq(b), 25, '[3, 4] - [0, 0] distance squared == 25');
-  });
-
-  test('#lengthOf -- Length of a vector', function(){
-    var a = new Vector2d(3, 4);
-    strictEqual(a.lengthOf(), 5, '[3, 4] length == 5');
-  });
-
-  test('#lengthOfSq -- Squared length of a vector', function(){
-    var a = new Vector2d(3, 4);
-    strictEqual(a.lengthOfSq(), 25, '[3, 4] length squared == 25');
-  });
+  module('Basic Math');
 
   test('#add - Add two vectors', function(){
     var a = new Vector2d(1, 2),
@@ -119,6 +115,9 @@
     deepEqual(b.clone().divide(a).toArray(), [2, 4], '[4, 8] / [2, 2] == [2, 4]');
     deepEqual(a.clone().divide([2, 0.5]).toArray(), [1, 4], '[2, 2] / Array[2, 0.5] == [1, 4]');
   });
+
+
+  module('Vector Manipulation');
 
   test('#scale - Scale a vector by a scalar', function(){
     var a = new Vector2d(4, 8);
@@ -170,6 +169,33 @@
 
     floatDeepEqual(a.clone().reflect(n).toArray(), [-4, -4], '[4, -4] reflected around [1, 0] == [-4, -4]');
     floatDeepEqual(a.clone().reflect([0, -1]).toArray(), [4, 4], '[4, -4] reflected around Array[0, -1] == [4, 4]');
+  });
+
+
+  module('Queries');
+
+  test('#distanceTo - Distance from one vector to another', function(){
+    var a = new Vector2d(0, 0),
+        b = new Vector2d(3, 4);
+
+    strictEqual(a.distanceTo(b), 5, '[3, 4] - [0, 0] distance == 5');
+  });
+
+  test('#distanceToSq - Squared distance from one vector to another', function(){
+    var a = new Vector2d(0, 0),
+        b = new Vector2d(3, 4);
+
+    strictEqual(a.distanceToSq(b), 25, '[3, 4] - [0, 0] distance squared == 25');
+  });
+
+  test('#lengthOf -- Length of a vector', function(){
+    var a = new Vector2d(3, 4);
+    strictEqual(a.lengthOf(), 5, '[3, 4] length == 5');
+  });
+
+  test('#lengthOfSq -- Squared length of a vector', function(){
+    var a = new Vector2d(3, 4);
+    strictEqual(a.lengthOfSq(), 25, '[3, 4] length squared == 25');
   });
 
   test('#unit - Vector of length 1', function(){

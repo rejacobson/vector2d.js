@@ -5,7 +5,11 @@
       return new Vector2d(x, y);
     }
 
-    this.push(x || 0, y || 0);
+    if (x instanceof Array) {
+      this.push(x[0], x[1]);
+    } else {
+      this.push(x || 0, y || 0);
+    }
 
     this._cached_length = null;
     this._cached_length_sq = null;
