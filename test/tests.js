@@ -193,6 +193,20 @@
     equal(a.dot([0, -1]), -4, '[4, 4].dot([0, -1]) == -4');
   });
 
+  test('#cross - Cross product', function(){
+    var a = new Vector2d(2, 3),
+        b = new Vector2d(4, 5),
+        c = [-6, 7];
+
+    var expected1 = (2 * 5) - (3 * 4),  // a.cross(b)
+        expected2 = (4 * 3) - (5 * 2),  // b.cross(a)
+        expected3 = (2 * 7) - (3 * -6); // a.cross(c)
+
+    equal(a.cross(b), expected1, a.toString() +'.cross('+ b.toString() +') == '+ expected1); 
+    equal(b.cross(a), expected2, b.toString() +'.cross('+ a.toString() +') == '+ expected2); 
+    equal(a.cross(c), expected3, a.toString() +'.cross('+ c.toString() +') == '+ expected3); 
+  });
+
   test('#angle - Angle of a vector', function(){
     var a = new Vector2d(4, 4);
     floatEqual(a.angle(), 45*0.0174532925, '[4, 4] is 45 degrees');

@@ -143,21 +143,25 @@
     return this.x * v[0] + this.y * v[1];
   };
   
+  Vector2d.prototype.cross = function(v) {
+    return (this.x * v[1]) - (this.y * v[0]); 
+  };
+
   Vector2d.prototype.angle = function(v) {
     return Math.atan2(this.x, this.y);
   };
-
 
   // amd
   if (typeof define !== 'undefined' && define.amd) {
     define(function(){ return Vector2d; });
   }
   
-  //common js
+  // commonjs and nodejs
   else if (typeof exports !== 'undefined') {
     exports.Vector2d = Vector2d;
   }
   
+  // Browser
   else if (typeof window !== 'undefined') {
     window.Vector2d = Vector2d;
   }
