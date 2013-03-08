@@ -171,6 +171,18 @@
     floatDeepEqual(a.clone().reflect([0, -1]).toArray(), [4, 4], '[4, -4] reflected around Array[0, -1] == [4, 4]');
   });
 
+  test('#unit - Vector of length 1', function(){
+    floatDeepEqual(Vector2d(3, 4).unit().toArray(), [3/5, 4/5], 'Unit length calculated');
+    deepEqual(Vector2d(40, 0).unit().toArray(), [1, 0], 'Unit length along x only'); 
+    deepEqual(Vector2d(0, 40).unit().toArray(), [0, 1], 'Unit length along y only'); 
+  });
+
+  test('#normal - Normal of a vector', function(){
+    deepEqual(Vector2d(4, 4).normal().toArray(), [4, -4], 'Normal of [4, 4] == [4, -4]');
+    deepEqual(Vector2d(1, 0).normal().toArray(), [0, -1], 'Normal of [1, 0] == [0, 1]');
+    deepEqual(Vector2d(0, -20).normal().toArray(), [-20, 0], 'Normal of [0, -20] == [-20, 0]');
+  });
+
 
   module('Queries');
 
@@ -196,19 +208,6 @@
   test('#lengthOfSq -- Squared length of a vector', function(){
     var a = new Vector2d(3, 4);
     strictEqual(a.lengthOfSq(), 25, '[3, 4] length squared == 25');
-  });
-
-  test('#unit - Vector of length 1', function(){
-    floatDeepEqual(Vector2d(3, 4).unit().toArray(), [3/5, 4/5], 'Unit length calculated');
-    deepEqual(Vector2d(40, 0).unit().toArray(), [1, 0], 'Unit length along x only'); 
-    deepEqual(Vector2d(0, 40).unit().toArray(), [0, 1], 'Unit length along y only'); 
-  });
-
-
-  test('#normal - Normal of a vector', function(){
-    deepEqual(Vector2d(4, 4).normal().toArray(), [4, -4], 'Normal of [4, 4] == [4, -4]');
-    deepEqual(Vector2d(1, 0).normal().toArray(), [0, -1], 'Normal of [1, 0] == [0, 1]');
-    deepEqual(Vector2d(0, -20).normal().toArray(), [-20, 0], 'Normal of [0, -20] == [-20, 0]');
   });
 
   test('#dot - Dot product', function(){
