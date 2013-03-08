@@ -42,7 +42,7 @@
   };
   
   Vector2d.prototype.set = function(x, y) {
-    if (x[0] !== undefined) {
+    if (x instanceof Array) {
       this.x = x[0];
       this.y = x[1];
     } else if (arguments.length == 2) {
@@ -127,20 +127,20 @@
     return this;
   };
   
+  // r = v - (2 * n * dot(v, n))
   Vector2d.prototype.reflect = function(n) {
     if (!(n instanceof Vector2d)) n = new Vector2d(n[0], n[1]);
-    // r = v - (2 * n * dot(v, n))
     return this.subtract(n.clone().scale(this.dot(n) * 2));
   };
   
   Vector2d.prototype.unit = function() {
      var l = this.lengthOf();
-     if (l) return this.clone().scale(1/l);
-     return new Vector2d(0, 0);
+     if (l) return this.scale(1/l);
+     return this.set(0, 0);
   };
   
   Vector2d.prototype.normal = function() {
-    return new Vector2d(this.y, -this.x);
+    return this.set(this.y, -this.x);
   };
   
   Vector2d.prototype.dot = function(v) {
@@ -152,6 +152,7 @@
   };
 
   Vector2d.prototype.angle = function(v) {
+    if (v instanceof Array) return Math.atan2(this.x, this.y) - Math.atan2(v[0], v[1]);
     return Math.atan2(this.x, this.y);
   };
 

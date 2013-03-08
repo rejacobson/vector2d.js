@@ -234,8 +234,13 @@
   });
 
   test('#angle - Angle of a vector', function(){
-    var a = new Vector2d(4, 4);
-    floatEqual(a.angle(), 45*0.0174532925, '[4, 4] is 45 degrees');
+    var a = new Vector2d(4, 4),
+        rads = 0.0174532925;
+
+    floatEqual(a.angle(), 45*rads, '[4, 4] is 45 degrees');
+    floatEqual(a.angle([4, 0]), -45*rads, 'Angle between [4, 4] and [4, 0] is -45 degrees');
+    floatEqual(a.angle([0, 4]), 45*rads, 'Angle between [4, 4] and [0, 4] is 45 degrees');
+    floatEqual(a.angle(Vector2d(-4, 4)), 90*rads, 'Angle between [4, 4] and [-4, 4] is 90 degrees');
   });
 
 })();
