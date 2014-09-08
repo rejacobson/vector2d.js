@@ -1,19 +1,19 @@
 var s = [];
 
 s.push(
-  createSuite('#toString',
+  createSuite('toString', 'utility',
 
-  '#toString', function(){
+  'vector.toString()', function(){
     vector.toString();
   },
 
-  '.toString', function() {
+  'Vector2d.toString(array)', function() {
     Vector2d.toString(array);
   })
 );
 
 s.push(
-  createSuite('#clone',
+  createSuite('clone', 'utility',
 
   '#clone', function(){
     vector.clone();
@@ -25,7 +25,7 @@ s.push(
 );
 
 s.push(
-  createSuite('#set',
+  createSuite('set', 'utility',
 
   '#set 1', function(){
     vector.set([5, 5]);
@@ -45,63 +45,7 @@ s.push(
 );
 
 s.push(
-  createSuite('#distanceTo',
-
-  '#distanceTo 1', function(){
-    vector.distanceTo([100, 100]);
-  },
-
-  '#distanceTo 2', function(){
-    vector.distanceTo(v2);
-  },
-
-  '.distanceTo', function() {
-    Vector2d.distanceTo(array, [100, 100]);
-  })
-);
-
-s.push(
-  createSuite('#distanceToSq',
-
-  '#distanceToSq 1', function(){
-    vector.distanceToSq([100, 100]);
-  },
-
-  '#distanceToSq 2', function(){
-    vector.distanceToSq(v2);
-  },
-
-  '.distanceToSq', function() {
-    Vector2d.distanceToSq(array, [100, 100]);
-  })
-);
-
-s.push(
-  createSuite('#lengthOf',
-
-  '#lengthOf', function(){
-    vector.lengthOf();
-  },
-
-  '.lengthOf', function() {
-    Vector2d.lengthOf(array);
-  })
-);
-
-s.push(
-  createSuite('lengthOfSq',
-
-  '#lengthOfSq', function(){
-    vector.lengthOfSq();
-  },
-
-  '.lengthOfSq', function() {
-    Vector2d.lengthOfSq(array);
-  })
-);
-
-s.push(
-  createSuite('#add',
+  createSuite('add', 'math',
 
   '#add 1', function(){
     vector.add([100, 100]);
@@ -117,7 +61,7 @@ s.push(
 );
 
 s.push(
-  createSuite('#subtract',
+  createSuite('subtract', 'math',
 
   '#subtract 1', function(){
     vector.subtract([100, 100]);
@@ -133,7 +77,7 @@ s.push(
 );
 
 s.push(
-  createSuite('#multiply',
+  createSuite('multiply', 'math',
 
   '#multiply 1', function(){
     vector.multiply([100, 100]);
@@ -149,7 +93,7 @@ s.push(
 );
 
 s.push(
-  createSuite('#divide',
+  createSuite('divide', 'math',
 
   '#divide 1', function(){
     vector.divide([100, 100]);
@@ -165,7 +109,7 @@ s.push(
 );
 
 s.push(
-  createSuite('#scale',
+  createSuite('scale', 'manipulations',
 
   '#scale', function(){
     vector.scale(2);
@@ -177,7 +121,7 @@ s.push(
 );
 
 s.push(
-  createSuite('#truncate',
+  createSuite('truncate', 'manipulations',
 
   '#truncate', function(){
     vector.truncate(2);
@@ -189,7 +133,7 @@ s.push(
 );
 
 s.push(
-  createSuite('#reverse',
+  createSuite('reverse', 'manipulations',
 
   '#reverse', function(){
     vector.reverse();
@@ -201,7 +145,7 @@ s.push(
 );
 
 s.push(
-  createSuite('#rotate',
+  createSuite('rotate', 'manipulations',
 
   '#rotate 1', function(){
     vector.rotate(45);
@@ -221,7 +165,7 @@ s.push(
 );
 
 s.push(
-  createSuite('#reflect',
+  createSuite('reflect', 'manipulations',
 
   '#reflect', function(){
     vector.reflect(v3);
@@ -233,7 +177,7 @@ s.push(
 );
 
 s.push(
-  createSuite('#unit',
+  createSuite('unit', 'manipulations',
 
   '#unit', function(){
     vector.unit();
@@ -245,7 +189,7 @@ s.push(
 );
 
 s.push(
-  createSuite('#normal',
+  createSuite('normal', 'manipulations',
 
   '#normal', function(){
     vector.normal();
@@ -257,7 +201,63 @@ s.push(
 );
 
 s.push(
-  createSuite('#dot',
+  createSuite('distanceTo', 'queries',
+
+  '#distanceTo 1', function(){
+    vector.distanceTo([100, 100]);
+  },
+
+  '#distanceTo 2', function(){
+    vector.distanceTo(v2);
+  },
+
+  '.distanceTo', function() {
+    Vector2d.distanceTo(array, [100, 100]);
+  })
+);
+
+s.push(
+  createSuite('distanceToSq', 'queries',
+
+  '#distanceToSq 1', function(){
+    vector.distanceToSq([100, 100]);
+  },
+
+  '#distanceToSq 2', function(){
+    vector.distanceToSq(v2);
+  },
+
+  '.distanceToSq', function() {
+    Vector2d.distanceToSq(array, [100, 100]);
+  })
+);
+
+s.push(
+  createSuite('lengthOf', 'queries',
+
+  '#lengthOf', function(){
+    vector.lengthOf();
+  },
+
+  '.lengthOf', function() {
+    Vector2d.lengthOf(array);
+  })
+);
+
+s.push(
+  createSuite('lengthOfSq', 'queries',
+
+  '#lengthOfSq', function(){
+    vector.lengthOfSq();
+  },
+
+  '.lengthOfSq', function() {
+    Vector2d.lengthOfSq(array);
+  })
+);
+
+s.push(
+  createSuite('dot', 'queries',
 
   '#dot', function(){
     vector.dot(v3);
@@ -269,7 +269,7 @@ s.push(
 );
 
 s.push(
-  createSuite('#cross',
+  createSuite('cross', 'queries',
 
   '#cross', function(){
     vector.cross(v3);
@@ -281,7 +281,7 @@ s.push(
 );
 
 s.push(
-  createSuite('#angle',
+  createSuite('angle', 'queries',
 
   '#angle 1', function(){
     vector.angle();
@@ -301,6 +301,5 @@ s.push(
 );
 
 $(function(){
-  $('body').append('<p>'+ s.length +' perf suites to run.</p>');
   layoutSuites(s);
 });

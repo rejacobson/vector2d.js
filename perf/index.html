@@ -2,36 +2,83 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>title</title>
+  <title>Vector2d.js - Performance Testing</title>
   <style type="text/css">
-  body {
-    font-family: Verdana;
-    color: #555;
-  }
-  h2 {
-    color: #888;
-  }
-  div.unit {
-    width: 500px;
-    height: 250px;
-    float: left;
-    border: 1px solid #ccc;
-    margin: 0 10px 10px 0;
-    padding: 10px;
-    background-color: #f5f5f5;
-  }
-  div.unit .results {
-    font-size: 11px;
-  }
+    @import '../css/style.css';
   </style>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="../vendor/lodash.min.js" type="text/javascript"></script>
   <script src="../vendor/platform.js" type="text/javascript"></script>
   <script src="../vendor/benchmark.js" type="text/javascript"></script>
+  <script src="../vendor/handlebars-v2.0.0.js" type="text/javascript"></script>
   <script src="../dist/vector2d.js" type="text/javascript"></script>
   <script src="perf-helpers.js" type="text/javascript"></script>
   <script src="perf.js" type="text/javascript"></script>
 </head>
 <body>
+  <div id="nav">
+    <a class="title" href="#_utility">Utility Methods</a>
+    <ul>
+      <li><a href="#tostring">toString</a></li>
+      <li><a href="#toarray">toArray</a></li>
+      <li><a href="#clone">clone</a></li>
+      <li><a href="#set">set</a></li>
+    </ul>
+
+    <a class="title" href="#_math">Basic Math</a>
+    <ul>
+      <li><a href="#add">add</a></li>
+      <li><a href="#subtract">subtract</a></li>
+      <li><a href="#multiply">multiply</a></li>
+      <li><a href="#divide">divide</a></li>
+    </ul>
+
+    <a class="title" href="#_manipulations">Manipulations</a>
+    <ul>
+      <li><a href="#scale">scale</a></li>
+      <li><a href="#truncate">truncate</a></li>
+      <li><a href="#reverse">reverse</a></li>
+      <li><a href="#rotate">rotate</a></li>
+      <li><a href="#reflect">reflect</a></li>
+      <li><a href="#unit">unit</a></li>
+      <li><a href="#normal">normal</a></li>
+    </ul>
+
+    <a class="title" href="#_queries">Queries</a>
+    <ul>
+      <li><a href="#distanceTo">distanceTo</a></li>
+      <li><a href="#distanceToSq">distanceToSq</a></li>
+      <li><a href="#lengthOf">lengthOf</a></li>
+      <li><a href="#lengthOfSq">lengthOfSq</a></li>
+      <li><a href="#dot">dot</a></li>
+      <li><a href="#cross">cross</a></li>
+      <li><a href="#angle">angle</a></li>
+    </ul>
+  </div>
+
+  <div id="content">
+    <h2>Performance Testing</h2>
+
+    Initial setup.
+
+    <pre>
+var vector = new Vector2d([10, 10]);
+var array  = [10, 10];
+var v2     = new Vector2d([100, 100]);
+var v3     = new Vector2d([-100, 100]);
+    </pre>
+
+    <h2 id="_utility">Utility Methods</h2>
+    <div id="utility"></div>
+
+    <h2 id="_math">Basic Vector Math</h2>
+    <div id="math"></div>
+
+    <h2 id="_manipulations">Vector Manipulation</h2>
+    <div id="manipulations"></div>
+
+    <h2 id="_queries">Queries</h2>
+    <div id="queries"></div>
+
 </body>
 </html>
