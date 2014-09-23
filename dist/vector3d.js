@@ -117,7 +117,7 @@
 
   //------------------------------------------------------------------------------------
   Vector3d.prototype.lengthOfSq = function() {
-    return this[0]*this[0] + this[1]*this[1] + this.[2]*this[2];
+    return this[0]*this[0] + this[1]*this[1] + this[2]*this[2];
   };
   Vector3d.lengthOfSq = function(v) {
     return v[0]*v[0] + v[1]*v[1] + v[2]*v[2];
