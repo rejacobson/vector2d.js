@@ -24,8 +24,12 @@
       this.push(x || 0, y || 0);
     }
 
-    this.__defineGetter__("x", function() { return this[0]; });
-    this.__defineGetter__("y", function() { return this[1]; });
+    this.__defineGetter__("x", function() {
+      return this[0];
+    });
+    this.__defineGetter__("y", function() {
+      return this[1];
+    });
 
     this.__defineSetter__("x", function(val) {
       this[0] = val;
@@ -115,6 +119,9 @@
     return v[0] * v[0] + v[1] * v[1];
   };
 
+  Vector2d.prototype.len = Vector2d.prototype.lengthOf;
+  Vector2d.len = Vector2d.lengthOf;
+
   //------------------------------------------------------------------------------------
   Vector2d.prototype.add = function(v) {
     this[0] += v[0];
@@ -187,12 +194,35 @@
     return v;
   };
 
+  Vector2d.prototype.clamp = Vector2d.prototype.truncate;
+  Vector2d.clamp = Vector2d.truncate;
+
   //------------------------------------------------------------------------------------
   Vector2d.prototype.reverse = function() {
     return this.scale(-1);
   };
   Vector2d.reverse = function(v) {
     return Vector2d.scale(v, -1);
+  };
+
+  //------------------------------------------------------------------------------------
+  Vector2d.prototype.perpendicularCW = function() {
+    [this[0], this[1]] = [this[1], -this[0]];
+    return this;
+  };
+  Vector2d.perpendicularCW = function(v) {
+    [v[0], v[1]] = [v[1], -v[0]];
+    return v;
+  };
+
+  //------------------------------------------------------------------------------------
+  Vector2d.prototype.perpendicularCCW = function() {
+    [this[0], this[1]] = [-this[1], this[0]];
+    return this;
+  };
+  Vector2d.perpendicularCCW = function(v) {
+    [v[0], v[1]] = [-v[1], v[0]];
+    return v;
   };
 
   //------------------------------------------------------------------------------------

@@ -211,6 +211,24 @@
     deepEqual(Vector2d.reverse(a), [2, -3], '[-2, 3] reversed == [2, -3]');
   });
 
+  test('#perpendicularCW - Method - Rotate a vector 90deg clockwise', function(){
+    var a = new Vector2d(2, 3);
+    deepEqual(a.perpendicularCW().toArray(), [3, -2], '[2, 3] perpendicularCW == [3, -2]');
+  });
+  test('#perpendicularCW - Function - Rotate a vector 90deg clockwise', function(){
+    var a = [2, 3];
+    deepEqual(Vector2d.perpendicularCW(a), [3, -2], '[2, 3] perpendicularCW == [3, -2]');
+  });
+
+  test('#perpendicularCCW - Method - Rotate a vector 90deg counter-clockwise', function(){
+    var a = new Vector2d(2, 3);
+    deepEqual(a.perpendicularCCW().toArray(), [-3, 2], '[2, 3] perpendicularCCW == [-3, 2]');
+  });
+  test('#perpendicularCCW - Function - Rotate a vector 90deg counter-clockwise', function(){
+    var a = [2, 3];
+    deepEqual(Vector2d.perpendicularCCW(a), [-3, 2], '[2, 3] perpendicularCCW == [-3, 2]');
+  });
+
   test('#rotate - Method - Rotate a vector', function(){
     var a = new Vector2d(4, 4),
         b = new Vector2d(4, 0),
@@ -339,6 +357,11 @@
   });
   test('#lengthOfSq - Function - Squared length of a vector', function(){
     strictEqual(Vector2d.lengthOfSq([3, 4]), 25, '[3, 4] length squared == 25');
+  });
+
+  test('#len - Method - alias of #lengthOf', function(){
+    var a = new Vector2d(3, 4);
+    strictEqual(a.len(), 5, '[3, 4] length == 5');
   });
 
   test('#dot - Method - Dot product', function(){
